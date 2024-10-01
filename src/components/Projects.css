@@ -1,0 +1,41 @@
+.projects {
+    background-color: #000000;
+}
+
+.project-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.project-card {
+    width: 200px;
+    height: 150px;
+    background-color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: rotate(-10deg);
+    animation: swingIn 1s forwards;
+}
+
+.project-card:nth-child(1) {
+    animation-delay: 0.5s;
+}
+
+.project-card:nth-child(2) {
+    animation-delay: 1s;
+}
+
+.project-card:nth-child(3) {
+    animation-delay: 1.5s;
+}
+
+@keyframes swingIn {
+    to {
+        opacity: 1;
+        transform: rotate(0);
+    }
+}

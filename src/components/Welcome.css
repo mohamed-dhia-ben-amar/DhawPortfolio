@@ -1,0 +1,39 @@
+@keyframes outline {
+    0% {
+        stroke-dasharray: 0, 100%;
+    }
+    100% {
+        stroke-dasharray: 100%, 0;
+    }
+}
+
+@keyframes fill {
+    0% {
+        fill: transparent;
+    }
+    100% {
+        fill: goldenrod;
+    }
+}
+
+.welcome-svg {
+    width: 100%;
+    height: 100%;
+}
+
+.welcome-rect {
+    fill: none;
+    stroke: goldenrod;
+    stroke-width: 2;
+}
+
+.welcome-text {
+    font-family: 'Arial', sans-serif;
+    font-size: 4rem;
+    font-weight: bold;
+    fill: transparent;
+    stroke: goldenrod;
+    stroke-width: 1px;
+    stroke-dasharray: 100%;
+    animation: outline 3s steps(30) forwards, fill 3s 3s forwards;
+}

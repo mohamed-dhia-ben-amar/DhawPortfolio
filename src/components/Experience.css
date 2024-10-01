@@ -1,0 +1,97 @@
+.experience {
+    background-color: #000000;
+    position: relative;
+    padding-top: 40px;
+}
+
+.experience:not(.visible) .timeline,
+.experience:not(.visible) .timeline-marker,
+.experience:not(.visible) .timeline-content {
+    animation: none;
+}
+
+.timeline {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: goldenrod;
+    animation: drawLine 4s forwards;
+}
+
+.timeline-marker {
+    width: 20px;
+    height: 20px;
+    background-color: goldenrod;
+    border-radius: 50%;
+    position: absolute;
+    top: -8px;
+    transform: translateX(-50%);
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+.timeline-content {
+    position: absolute;
+    top: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    padding: 15px;
+    border-radius: 8px;
+    background-color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    animation: revealContent 1s forwards;
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.card .company {
+    font-weight: bold;
+    color: #0073e6;
+}
+
+.card .date {
+    font-style: italic;
+    color: #888;
+}
+
+.card .description {
+    color: #555;
+}
+
+.card .description h4 {
+    margin-top: 1rem;
+    color: #333;
+}
+
+.card .description ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+}
+
+@keyframes drawLine {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes revealContent {
+    to {
+        opacity: 1;
+    }
+}
