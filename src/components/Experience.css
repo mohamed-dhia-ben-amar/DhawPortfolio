@@ -40,7 +40,8 @@
     width: 300px;
     padding: 15px;
     border-radius: 8px;
-    background-color: #fff;
+    background-color: #000000;
+    border: white 2px solid;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     opacity: 0;
     animation: revealContent 1s forwards;

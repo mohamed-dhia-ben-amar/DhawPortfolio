@@ -36,3 +36,9 @@
     transform: rotate(360deg);
   }
 }
+
+section {
+  height: 100vh;
+  padding: 20px;
+  scroll-behavior: smooth; /* Ensure smooth scrolling */
+}

@@ -1,25 +1,57 @@
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
+import Welcome from './components/Welcome';
+import MainMenu from './components/MainMenu';
+import Experience from './components/Experience';
+import Projects from './components/Projects';
+import Contact from './components/Contact';
+import SectionIndicators from './components/SectionIndicators';
+import GoToTopButton from './components/GoToTopButton';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    const [loaded, setLoaded] = useState(false);
+    const [experienceVisible, setExperienceVisible] = useState(false);
+    const [projectsLoaded, setProjectsLoaded] = useState(false);
+    const [contactLoaded, setContactLoaded] = useState(false);
+
+    const handleLoaded = () => {
+        setLoaded(true);
+    };
+
+    const handleExperienceClick = () => {
+        setExperienceVisible(true);
+    };
+
+    const handleProjectsLoaded = () => {
+        setProjectsLoaded(true);
+    };
+
+    const handleContactLoaded = () => {
+        setContactLoaded(true);
+    };
+
+    return (
+        <div>
+            {!loaded ? (
+                <Welcome onLoaded={handleLoaded} />
+            ) : (
+                <>
+                    <SectionIndicators />
+                    <GoToTopButton />
+                    <MainMenu onExperienceClick={handleExperienceClick} />
+                    <section id="experience">
+                        <Experience visible={experienceVisible} />
+                    </section>
+                    <section id="projects">
+                        <Projects onLoaded={handleProjectsLoaded} />
+                    </section>
+                    <section id="contact">
+                        <Contact onLoaded={handleContactLoaded} />
+                    </section>
+                </>
+            )}
+        </div>
+    );
+};
 
 export default App;

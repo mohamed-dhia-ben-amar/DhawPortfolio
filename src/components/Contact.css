@@ -1,16 +1,18 @@
 .contact {
     background-color: #000000;
-    padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: #ffffff;
+    animation: fadeInUp 0.5s ease-in-out;
 }
 
 .contact-form {
     display: flex;
     flex-direction: column;
-    gap: 15px;
+    gap: 20px;
     width: 100%;
-    max-width: 500px;
+    max-width: 600px;
     margin: 0 auto;
 }
 
@@ -19,12 +21,41 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 16px;
-    transition: border-color 0.3s;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    display: flex;
+    align-items: center;
 }
 
-.form-input:focus {
-    border-color: #0073e6;
+.form-input input,
+.form-input textarea {
+    flex: 1;
+    border: none;
+    background: none;
+    color: #ffffff;
     outline: none;
+    padding-left: 10px;
+}
+
+.form-input textarea {
+    flex: 1;
+    border: none;
+    background: none;
+    color: #ffffff;
+    outline: none;
+    padding-left: 10px;
+    resize: none; /* Make textarea unresizable */
+    display: flex;
+    align-items: center; /* Center the content vertically */
+    padding-top: 16%; /* Add padding to center the placeholder vertically */
+}
+
+.form-input textarea::placeholder {
+    text-align: left; /* Align the placeholder text to the left */
+}
+
+.form-input:focus-within {
+    border-color: #0073e6;
+    box-shadow: 0 0 10px rgba(0, 115, 230, 0.5);
 }
 
 .form-button {
@@ -35,9 +66,36 @@
     border-radius: 5px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.3s;
 }
 
 .form-button:hover {
     background-color: #a87500;
+    transform: translateY(-3px);
+}
+
+.form-button:active {
+    transform: translateY(0);
+}
+
+.form-input .icon {
+    margin-right: 10px;
+    color: #0073e6;
+}
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
