@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Experience.css';
 
 const Experience = ({ visible }) => {
+    const [selectedExperience, setSelectedExperience] = useState(null);
+
     const experiences = [
         {
             date: {
@@ -84,62 +86,54 @@ const Experience = ({ visible }) => {
         }
     ];
 
-    if (!experiences || experiences.length === 0) {
-        return <div>No experiences available.</div>;
-    }
+    const handleViewMore = (experience) => {
+        setSelectedExperience(experience);
+    };
+
+    const handleClosePopup = () => {
+        setSelectedExperience(null);
+    };
 
     return (
-        <div id="experience" className={`experience h-screen flex flex-col space-y-4 ${visible ? 'visible' : ''}`}>
-            <h2 className="text-3xl font-bold mb-8">Professional Experience</h2>
-            <div className="timeline-container" style={{ position: 'relative', width: '100%' }}>
-                <div className="timeline"></div>
-                {experiences.map((exp, index) => (
-                    <React.Fragment key={index}>
-                        <div
-                            className="timeline-marker"
-                            style={{
-                                left: `${(index + 1) * (100 / (experiences.length + 1))}%`,
-                                animationDelay: `${(index + 1) * 2}s`
-                            }}
-                        ></div>
-                        <div
-                            className="timeline-content card"
-                            style={{
-                                left: `${(index + 1) * (100 / (experiences.length + 1))}%`,
-                                animationDelay: `${(index + 1) * 2 + 1}s`
-                            }}
-                        >
-                            <h3>{exp.title}</h3>
-                            <p className="company">{exp.company.name}, {exp.company.location.city}, {exp.company.location.country}</p>
-                            <p className="date">{exp.date.startMonth} {exp.date.startYear} - {exp.date.endMonth} {exp.date.endYear}</p>
-                            <div className="description">
-                                <h4>Responsibilities:</h4>
-                                <ul>
-                                    {exp.description.responsibilities.map((item, idx) => (
-                                        <li key={idx}>{item}</li>
-                                    ))}
-                                </ul>
-                                {exp.description.achievements && (
-                                    <>
-                                        <h4>Achievements:</h4>
-                                        <ul>
-                                            {exp.description.achievements.map((item, idx) => (
-                                                <li key={idx}>{item}</li>
-                                            ))}
-                                        </ul>
-                                    </>
-                                )}
-                                <h4>Technologies:</h4>
-                                <ul>
-                                    {exp.technologies.map((tech, idx) => (
-                                        <li key={idx}>{tech}</li>
-                                    ))}
-                                </ul>
-                            </div>
-                        </div>
-                    </React.Fragment>
-                ))}
+        <div id="experience" className={`experience h-screen flex items-center justify-center ${visible ? 'visible' : ''}`}>
+            <div className="experience-content">
+                <h2 className="text-3xl font-bold mb-8">Professional Experience</h2>
+                <ul className="experience-list">
+                    {experiences.map((exp, index) => (
+                        <li key={index} className="experience-item">
+                            <span>{exp.title}</span>
+                            <span className="dots">....................................</span>
+                            <button className="view-more-button" onClick={() => handleViewMore(exp)}>
+                                View More
+                            </button>
+                        </li>
+                    ))}
+                </ul>
             </div>
+            {selectedExperience && (
+                <div className="popup">
+                    <div className="popup-content">
+                        <button className="close-button" onClick={handleClosePopup}>X</button>
+                        <h3>{selectedExperience.title}</h3>
+                        <p className="company">{selectedExperience.company.name}, {selectedExperience.company.location.city}, {selectedExperience.company.location.country}</p>
+                        <p className="date">{selectedExperience.date.startMonth} {selectedExperience.date.startYear} - {selectedExperience.date.endMonth} {selectedExperience.date.endYear}</p>
+                        <div className="description">
+                            <h4>Responsibilities:</h4>
+                            <ul>
+                                {selectedExperience.description.responsibilities.map((item, idx) => (
+                                    <li key={idx}>{item}</li>
+                                ))}
+                            </ul>
+                            <h4>Technologies:</h4>
+                            <ul>
+                                {selectedExperience.technologies.map((tech, idx) => (
+                                    <li key={idx}>{tech}</li>
+                                ))}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            )}
         </div>
     );
 };

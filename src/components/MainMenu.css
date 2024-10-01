@@ -1,17 +1,11 @@
 .main-menu {
     background-color: #000000;
-    position: relative;
-}
-
-.menu-container {
-    position: relative;
-    border: 2px solid goldenrod;
-    border-radius: 10px;
-    padding: 20px;
+    padding: 1rem;
+    border: 0.125rem solid goldenrod;
+    border-radius: 0.625rem;
 }
 
 .menu-item-container {
-    position: relative;
     display: flex;
     align-items: center;
     opacity: 0;
@@ -32,30 +26,35 @@
 }
 
 .menu-item {
-    padding: 10px;
-    position: relative;
-}
-
-.menu-item:hover {
-    color: #bd4300; /* Reddish gold */
-}
-
-.arrow {
-    font-size: 1.5rem;
+    padding: 1rem;
     color: goldenrod;
-    transition: transform 0.3s ease, color 0.3s ease, font-size 0.3s ease;
-    margin-right: 10px;
+    text-decoration: none;
+    font-size: 1.25rem;
+    transition: color 0.3s, transform 0.3s;
 }
 
-.arrow.hovered {
-    font-size: 2rem;
-    color: #bd4300; /* Reddish gold */
-    transform: scale(1.5);
-}
-
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateX(0);
+    .menu-item:hover {
+        color: #a87500;
+        transform: translateX(0.5rem);
     }
-}
+
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateX(-100%);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* Media queries for mobile responsiveness */
+    @media (max-width: 768px) {
+        .main-menu {
+            padding: 0.5rem;
+        }
+        .menu-item {
+            font-size: 1rem;
+        }
+    }

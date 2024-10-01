@@ -1,18 +1,19 @@
 .section-indicators {
     position: fixed;
-    right: 20px;
+    right: 1rem;
     top: 50%;
     transform: translateY(-50%);
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 0.625rem;
+    z-index: 10;
 }
 
 .indicator {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
     background-color: transparent;
-    border: 2px solid #ccc;
+    border: 0.125rem solid #ccc;
     cursor: pointer;
     transition: background-color 0.3s, transform 0.3s;
 }
@@ -23,4 +24,11 @@
 
 .indicator:hover {
     transform: scale(1.2);
+}
+
+@media (min-width: 768px) {
+    .indicator {
+        width: 1.5rem;
+        height: 1.5rem;
+    }
 }
